@@ -1,18 +1,24 @@
 
 
 
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import './navbar.css'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 const Navbar = () => {
-
+  //  State to check if the search is clicked 
   const [searchOpen , setSearchOpen] = useState(false);
+
+  // ref to the input to show inut foucus when search icon is clicked.
+  const inputRef = useRef(null);
 
 
    const searchClick = () => {
 
          setSearchOpen(true);
+
+        //  Open the input tag foucs when clicked
+        setTimeout(() => {inputRef.current.focus()} , 2000);
 
    }
   return (
@@ -27,7 +33,7 @@ const Navbar = () => {
             <form>
         
               
-              <input className='nav__input' type='text' placeholder='Search..' />
+              <input className='nav__input' type='text' placeholder='Search..' ref={inputRef}/>
               <button className='btn__submit' type='submit'></button>
                
          
